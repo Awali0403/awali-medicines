@@ -156,16 +156,16 @@
             }
     
             const updateData = async (id) => {
-                let namaform = document.getElementById('nama_obat').value;
-                let jenisform = document.getElementById('jenis_obat').value;
+                let nama_obatform = document.getElementById('nama_obat').value;
+                let jenis_obatform = document.getElementById('jenis_obat').value;
                 let produsenform = document.getElementById('produsen').value;
                 let hargaform= document.getElementById('harga').value;
                 let stokform = document.getElementById('stok').value;
                 let text = "Betul data akan diubah ?"
                 if (confirm(text) == true) {
-                    await axios.patch(`http://103.163.110.11:3031/medicines/{id}`, {
-                        nama_obat: namaform,
-                        jenis_obat: jenisobatform,
+                    await axios.patch(`http://103.163.110.11:3031/medicines/${id}`, {
+                        nama_obat: nama_obatform,
+                        jenis_obat: jenis_obatform,
                         produsen: produsenform,
                         harga: hargaform,
                         stok: stokform
@@ -182,14 +182,14 @@
             }
     
             const saveData = async () => {
-                let namaform = document.getElementById('nama_obat').value;
-                let jenisform = document.getElementById('jenis_obat').value;
+                let nama_obatform = document.getElementById('nama_obat').value;
+                let jenis_obatform = document.getElementById('jenis_obat').value;
                 let produsenform = document.getElementById('produsen').value;
                 let hargaform= document.getElementById('harga').value;
                 let stokform = document.getElementById('stok').value;
                 await axios.post(`http://103.163.110.11:3031/medicines`, {
-                    nama_obat: namaform,
-                        jenis_obat: jenisobatform,
+                    nama_obat: nama_obatform,
+                        jenis_obat: jenis_obatform,
                         produsen: produsenform,
                         harga: hargaform,
                         stok: stokform
@@ -212,7 +212,7 @@
             const deleteData = async (id) => {
                 let text = "Betul data akan dihapus ?"
                 if (confirm(text) == true) {
-                    await axios.delete(`http://103.163.110.11:3031/medicines/{id}`)
+                    await axios.delete(`http://103.163.110.11:3031/medicines/${id}`)
                         .then((response) => {
                             getData();
                             alert("Data Berhasil Dihapus");
