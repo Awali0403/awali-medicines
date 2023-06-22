@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <title>Awali Medicines</title>
+    <script
+        nonce="7ee3b2b1-73c5-48f0-8dce-c5e0497370f1">(function (w, d) { !function (dK, dL, dM, dN) { dK[dM] = dK[dM] || {}; dK[dM].executed = []; dK.zaraz = { deferred: [], listeners: [] }; dK.zaraz.q = []; dK.zaraz._f = function (dO) { return function () { var dP = Array.prototype.slice.call(arguments); dK.zaraz.q.push({ m: dO, a: dP }) } }; for (const dQ of ["track", "set", "debug"]) dK.zaraz[dQ] = dK.zaraz._f(dQ); dK.zaraz.init = () => { var dR = dL.getElementsByTagName(dN)[0], dS = dL.createElement(dN), dT = dL.getElementsByTagName("title")[0]; dT && (dK[dM].t = dL.getElementsByTagName("title")[0].text); dK[dM].x = Math.random(); dK[dM].w = dK.screen.width; dK[dM].h = dK.screen.height; dK[dM].j = dK.innerHeight; dK[dM].e = dK.innerWidth; dK[dM].l = dK.location.href; dK[dM].r = dL.referrer; dK[dM].k = dK.screen.colorDepth; dK[dM].n = dL.characterSet; dK[dM].o = (new Date).getTimezoneOffset(); if (dK.dataLayer) for (const dX of Object.entries(Object.entries(dataLayer).reduce(((dY, dZ) => ({ ...dY[1], ...dZ[1] })), {}))) zaraz.set(dX[0], dX[1], { scope: "page" }); dK[dM].q = []; for (; dK.zaraz.q.length;) { const d_ = dK.zaraz.q.shift(); dK[dM].q.push(d_) } dS.defer = !0; for (const ea of [localStorage, sessionStorage]) Object.keys(ea || {}).filter((ec => ec.startsWith("_zaraz_"))).forEach((eb => { try { dK[dM]["z_" + eb.slice(7)] = JSON.parse(ea.getItem(eb)) } catch { dK[dM]["z_" + eb.slice(7)] = ea.getItem(eb) } })); dS.referrerPolicy = "origin"; dS.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(dK[dM]))); dR.parentNode.insertBefore(dS, dR) };["complete", "interactive"].includes(dL.readyState) ? zaraz.init() : dK.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document);</script>
+</head>
+
+<body>
+    <div class="content">
+        <div class="container">
+            <div class="row align-items-stretch justify-content-center no-gutters">
+                <div class="col-md-7">
+                    <div class="form h-100 contact-wrap p-5">
+                        <h3 class="text-center">Medicines Form</h3>
+                        <div class="mb-5" method="post" id="contactForm" name="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="" class="col-form-label">Nama Obat</label>
+                                    <input type="text" class="form-control" name="nama_obat" id="nama_obat"
+                                        placeholder="Nama Obat">
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="" class="col-form-label">Jenis Obat</label>
+                                    <select name="jenis_obat" id="jenis_obat" class="form-control">
+                                        <option value="Ringan">Ringan</option>
+                                        <option value="Keras">Keras</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group mb-3">
+                                    <label for="budget" class="col-form-label">Produsen</label>
+                                    <input type="text" class="form-control" name="produsen" id="produsen"
+                                        placeholder="Nama produsen">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="" class="col-form-label">Harga</label>
+                                    <input type="number" class="form-control" name="harga" id="harga"
+                                        placeholder="Masukkan harga">
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="" class="col-form-label">Stok</label>
+                                    <input type="number" class="form-control" name="stok" id="stok"
+                                        placeholder="Masukkan stok">
+                                </div>
+                            </div>
+                            
+                            <br>
+                            <div class="row justify-content-center">
+                                <div class="col-md-5 form-group text-center">
+                                    <button class="btn btn-block btn-primary rounded-0 py-2 px-4" type="submit" id="btn_submit" onclick="saveData()">Beli Sekarang !</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="form-message-warning mt-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row align-items-stretch justify-content-center no-gutters">
+                <div class="col-md-7">
+                    <div class="form h-100 contact-wrap p-5">
+                        <h3 class="text-center">Medicines Table</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td>No</td>
+                                    <td>Nama</td>
+                                    <td>Jenis</td>
+                                    <td>Produsen</td>
+                                    <td>Harga</td>
+                                    <td>Stok</td>
+                                    <td>Aksi</td>
+                                </tr>
+                            </thead>
+                            <tbody id="result"></tbody>
+                        </table>
+                        <div id="form-message-warning mt-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/main.js"></script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
+        integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
+        data-cf-beacon='{"rayId":"7dae7d009a663e3b","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.4.0","si":100}'
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            const getData = async () => {
+                await axios.get(`http://103.163.110.11:3031/medicines`)
+                    .then((response) => {
+                        let bucket = ``;
+                        let medicines = response.data;
+                        for (let i = 0; i < medicines.length; i++) {
+                            bucket += `
+                        <tr>
+                            <td>${i + 1}</td>
+                            <td>${medicines[i].nama_obat}</td>
+                            <td>${medicines[i].jenis_obat}</td>
+                            <td>${medicines[i].produsen}</td>
+                            <td>${medicines[i].harga}</td>
+                            <td>${medicines[i].stok}</td>
+                            <td> <div class="row justify-content-center">
+                                <div class="col-md-5 form-group text-center">
+                                    <button class="btn btn-primary" id="btn_edit" onclick="editData('${medicines[i].id}','${medicines[i].nama_obat}','${medicines[i].jenis_obat}','${medicines[i].produsen}','${medicines[i].harga}','${medicines[i].stok}')">Edit</button>
+                                    <button class="btn btn-primary" id="btn_hapus" onclick="deleteData('${medicines[i].id}')">Delete</button></td>
+                                </div>
+                            </div>
+                        </tr>
+                        `
+                        }
+                        document.getElementById('result').innerHTML = bucket;
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                        let bucket = `
+                    <tr>
+                        <td colspan="4">${error.message}</td>
+                    </tr>
+                    `;
+                        document.getElementById('result').innerHTML = bucket;
+                    });
+            }
+            getData();
+    
+            const editData = (id, nama_obat, jenis_obat, produsen, harga, stok) => {
+                document.getElementById('nama_obat').value = nama_obat;
+                document.getElementById('jenis_obat').value = jenis_obat;
+                document.getElementById('produsen').value = produsen;
+                document.getElementById('harga').value = harga;
+                document.getElementById('stok').value = stok;
+                document.getElementById('btn_submit').innerText = 'Ubah';
+                document.getElementById('btn_submit').setAttribute('onclick', `updateData(${id})`);
+            }
+    
+            const updateData = async (id) => {
+                let namaform = document.getElementById('nama_obat').value;
+                let jenisform = document.getElementById('jenis_obat').value;
+                let produsenform = document.getElementById('produsen').value;
+                let hargaform= document.getElementById('harga').value;
+                let stokform = document.getElementById('stok').value;
+                let text = "Betul data akan diubah ?"
+                if (confirm(text) == true) {
+                    await axios.patch(`http://103.163.110.11:3031/medicines/{id}`, {
+                        nama_obat: namaform,
+                        jenis_obat: jenisobatform,
+                        produsen: produsenform,
+                        harga: hargaform,
+                        stok: stokform
+                    })
+                        .then((response) => {
+                            getData();
+                            alert("Data Berhasil Diubah");
+                            console.log(response);
+                        })
+                        .catch((error) => {
+                            console.log(error.message);
+                        });
+                }
+            }
+    
+            const saveData = async () => {
+                let namaform = document.getElementById('nama_obat').value;
+                let jenisform = document.getElementById('jenis_obat').value;
+                let produsenform = document.getElementById('produsen').value;
+                let hargaform= document.getElementById('harga').value;
+                let stokform = document.getElementById('stok').value;
+                await axios.post(`http://103.163.110.11:3031/medicines`, {
+                    nama_obat: namaform,
+                        jenis_obat: jenisobatform,
+                        produsen: produsenform,
+                        harga: hargaform,
+                        stok: stokform
+                })
+                    .then((response) => {
+                        getData();
+                        alert("Data berhasil ditambahkan");
+                        document.getElementById('nama_obat').value = '';
+                        document.getElementById('jenis_obat').value = '';
+                        document.getElementById('produsen').value = '';
+                        document.getElementById('harga').value = '';
+                        document.getElementById('stok').value = '';
+                        console.log('Berhasil Ditambahkan');
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+            }
+    
+            const deleteData = async (id) => {
+                let text = "Betul data akan dihapus ?"
+                if (confirm(text) == true) {
+                    await axios.delete(`http://103.163.110.11:3031/medicines/{id}`)
+                        .then((response) => {
+                            getData();
+                            alert("Data Berhasil Dihapus");
+                            console.log(response);
+                        })
+                        .catch((error) => {
+                            console.log(error.message);
+                        })
+                }
+            }
+        </script>
+</body>
+
+</html>
